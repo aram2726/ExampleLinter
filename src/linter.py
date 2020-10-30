@@ -1,3 +1,5 @@
+from typing import Tuple
+
 from stack import Stack
 
 
@@ -12,15 +14,10 @@ class ExampleLinter:
         "[": "]",
     }
 
-    def check_end(self, line):
+    def check_end(self, line: str) -> bool:
         """
         Check if line ends with `;` or not.
-
-        :type line: str
         :param line: Line in document.
-
-        :rtype: bool
-        :return: bool
         """
         print(line)
         line_result = self.match_symbols(line)
@@ -42,14 +39,10 @@ class ExampleLinter:
         print("==================================")
         return result
 
-    def match_symbols(self, line):
+    def match_symbols(self, line: str) -> Tuple[bool, str]:
         """
         Check if there are none closed brackets in line or senseless closing bracket.
-
-        :type line: str
         :param line: Line in document.
-
-        :rtype: Tuple[bool, str]
         :return: Boolena condition of line and a message.
         """
         openers = self.symbol_pairs.keys()
